@@ -8,6 +8,14 @@ SOMEIP_TOOL_CMD="${SOMEIP_TOOL} -ll verbose"
 
 EXAMPLE_BASE_DIR=./capicxx-core-tools/CommonAPI-Examples
 
-EXAMPLE_01_DIR=$EXAMPLE_BASE_DIR/E01HelloWorld
-$CORE_TOOL_CMD      $EXAMPLE_01_DIR/fidl/E01HelloWorld.fidl             -d $EXAMPLE_01_DIR/src-gen/core
-$SOMEIP_TOOL_CMD    $EXAMPLE_01_DIR/fidl/E01HelloWorld-SomeIP.fdepl     -d $EXAMPLE_01_DIR/src-gen/someip
+EXAMPLES=(
+    "E01HelloWorld"
+    "E02Attributes"
+)
+
+for EXAMPLE in "${EXAMPLES[@]}"; do
+    echo "************Generating code for example: $EXAMPLE************"
+    EXAMPLE_DIR=$EXAMPLE_BASE_DIR/$EXAMPLE
+    $CORE_TOOL_CMD      $EXAMPLE_DIR/fidl/$EXAMPLE.fidl             -d $EXAMPLE_DIR/src-gen/core
+    $SOMEIP_TOOL_CMD    $EXAMPLE_DIR/fidl/$EXAMPLE-SomeIP.fdepl     -d $EXAMPLE_DIR/src-gen/someip
+done
