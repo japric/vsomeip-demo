@@ -11,6 +11,7 @@ EXAMPLE_BASE_DIR=./capicxx-core-tools/CommonAPI-Examples
 EXAMPLES=(
     "E01HelloWorld"
     "E02Attributes"
+    "E03Methods"
 )
 
 for EXAMPLE in "${EXAMPLES[@]}"; do
