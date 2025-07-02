@@ -8,6 +8,8 @@
 
 ### preparation
 
+#### tools
+
 > install and configure these tools
 
 - git-repo
@@ -16,18 +18,40 @@
 make sure they are ready installed by run
 `repo help` and `java -version`
 
+#### ethernet and ip
+
+check your ethernet `network interface` name and `YOUR_IP`
+
+```
+ip -o addr show  | awk '/inet / {gsub(/\/.*/, "", $4); print $2, $4}' | grep -Ev 'docker|lo'
+
+# output is your network interface name and YOUR_IP
+eth0 192.168.1.9
+```
+
+add route
+
+```
+route add -net 224.0.0.0/4 dev eth0
+```
+
+
+
 ### download code
 
 `repo init -u git@github.com:japric/vsomeip_repo.git -m default.xml --repo-url=https://mirrors.tuna.tsinghua.edu.cn/git/git-repo/`
 
 ### build
 
+> note: use YOUR_IP for -DUNICAST_ADDRESS param
+
+
 ```
 chmod +x gen.sh
 # generate interface code by commonapi tool in gen.sh
 ./gen.sh
 mkdir build && cd build
-cmake .. -DGTEST_ROOT=$(pwd)/../googletest
+cmake .. -DGTEST_ROOT=$(pwd)/../googletest -DUNICAST_ADDRESS=192.168.1.9
 make -j8
 cd ..
 ```
