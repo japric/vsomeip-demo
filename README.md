@@ -63,14 +63,14 @@ cd ..
 > run client
 
 ```
-export VSOMEIP_CONFIGURATION=$(pwd)/capicxx-core-tools/CommonAPI-Examples/E01HelloWorld/vsomeip-local.json
+export VSOMEIP_CONFIGURATION=$(pwd)/config/vsomeip-local.json
 VSOMEIP_APPLICATION_NAME=client-sample ./build/bin/E01HelloWorld/E01HelloWorldClient
 ```
 
 > run service in another commandline window
 
 ```
-export VSOMEIP_CONFIGURATION=$(pwd)/capicxx-core-tools/CommonAPI-Examples/E01HelloWorld/vsomeip-local.json
+export VSOMEIP_CONFIGURATION=$(pwd)/config/vsomeip-local.json
 VSOMEIP_APPLICATION_NAME=service-sample ./build/bin/E01HelloWorldService
 ```
 
