@@ -15,11 +15,20 @@ EXAMPLES=(
     "E04PhoneBook"
     "E05Manager"
     "E06Unions"
+    "E07Mainloop"
+    "E08CrcProtection"
 )
 
 for EXAMPLE in "${EXAMPLES[@]}"; do
     echo "************Generating code for example: $EXAMPLE************"
     EXAMPLE_DIR=$EXAMPLE_BASE_DIR/$EXAMPLE
-    $CORE_TOOL_CMD      $EXAMPLE_DIR/fidl/$EXAMPLE.fidl             -d $EXAMPLE_DIR/src-gen/core
-    $SOMEIP_TOOL_CMD    $EXAMPLE_DIR/fidl/$EXAMPLE-SomeIP.fdepl     -d $EXAMPLE_DIR/src-gen/someip
+    FIDL=$EXAMPLE.fidl
+    FDEPL=$EXAMPLE-SomeIP.fdepl
+    if [ $EXAMPLE = "E08CrcProtection" ]; then
+        FDEPL=$EXAMPLE.fdepl
+    fi
+    echo "-----------Using FIDL file: $FIDL"
+    echo "-----------Using FDEPL file: $FDEPL"
+    $CORE_TOOL_CMD      $EXAMPLE_DIR/fidl/$FIDL             -d $EXAMPLE_DIR/src-gen/core
+    $SOMEIP_TOOL_CMD    $EXAMPLE_DIR/fidl/$FDEPL            -d $EXAMPLE_DIR/src-gen/someip
 done
