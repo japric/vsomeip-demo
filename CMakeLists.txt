@@ -14,4 +14,8 @@ add_subdirectory(capicxx-someip-runtime)
 
 
 add_subdirectory(capicxx-core-tools/CommonAPI-Examples/E01HelloWorld)
+add_subdirectory(capicxx-core-tools/CommonAPI-Examples/E02Attributes)
 add_subdirectory(capicxx-core-tools/CommonAPI-Examples/E03Methods)
+add_subdirectory(capicxx-core-tools/CommonAPI-Examples/E04PhoneBook)
+add_subdirectory(capicxx-core-tools/CommonAPI-Examples/E05Manager)
+add_subdirectory(capicxx-core-tools/CommonAPI-Examples/E06Unions)

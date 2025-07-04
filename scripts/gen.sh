@@ -12,6 +12,9 @@ EXAMPLES=(
     "E01HelloWorld"
     "E02Attributes"
     "E03Methods"
+    "E04PhoneBook"
+    "E05Manager"
+    "E06Unions"
 )
 
 for EXAMPLE in "${EXAMPLES[@]}"; do
